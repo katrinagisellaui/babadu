@@ -6,7 +6,7 @@
 <html>
 <head>
     <title>C DAFTAR SPONSOR (ATLET)</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="style.css"> -->
     <!-- <link rel="stylesheet" href="{% static 'css/cr_daftar_atlet/style.css' %}"> -->
   <script src="{% static 'js/cr_daftar_atlet/script.js' %}"></script>
 
@@ -165,15 +165,19 @@
 
     <div class="container">
       <h1>DAFTAR SPONSOR</h1>
-      <form id="sponsorForm">
+      <form id="sponsorForm", method="POST">
         {% csrf_token %}
         <div>
           <label for="sponsorDropdown">Nama Sponsor:</label>
-          <select id="sponsorDropdown" required>
-            <option value="">Pilih sponsor</option>
-            <option value="Sponsor A">Sponsor A</option>
-            <option value="Sponsor B">Sponsor B</option>
-            <option value="Sponsor C">Sponsor C</option>
+          <select name="sponsorDropdown" required>
+              <option value="">Pilih sponsor</option>
+              {% for s in sponsor_list %}
+                  <option value="{{ s.id_sponsor }}">{{ s.nama_brand }}</option>
+              {% endfor %}
+            <option value="Sponsor A">Pike</option>
+            <option value="Sponsor B">PillowDash</option>
+            <option value="Sponsor C">Abbidas</option>
+            <option value="Sponsor D">Strive</option>
             <!-- Tambahkan opsi sponsor lainnya -->
           </select>
         </div>

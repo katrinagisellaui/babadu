@@ -1,0 +1,13 @@
+[
+    {
+      "model": "c_daftar_sponsor.Sponsor",
+      "pk": 1,
+      "fields": {
+        "id_sponsor": "9ee56ac5-af2a-4654-84a7-cd61383662be",
+        "nama_brand": "Johnny & Johnny",
+        "website": "https://www.johnynco.com",
+        "cp_name": "Arlette Batterbee",
+        "cp_email": "abatterbee0@yahoo.com"
+      }
+    }
+]

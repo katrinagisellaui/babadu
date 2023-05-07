@@ -1,22 +1,21 @@
 from django.shortcuts import render
 
+from c_daftar_sponsor.models import Sponsor
+
 # Create your views here.
 
 
 def show_render(request):
     if request.method == "POST":
-        # username = request.POST.get("username")
-        # password = request.POST.get("password")
-        # user = authenticate(request, username=username, password=password)
-        atlet = request.POST.get("athleteDropdown")
+        sponsor = request.POST.get("sponsorDropdown")
 
+        # change this onto all sponsor yang atletnya belum daftar
         context = {
-            'batch': atlet
+            'sponsor_list': Sponsor.objects.all()
         }
 
-        print(atlet)
-        response = render(request, "list-atlet.html", context)
-        # response.set_cookie("last_login", str(datetime.datetime.now()))
+        print(sponsor)
+        response = render(request, "daftar-sponsor.html", context)
         return response
 
         # if user is not None:
@@ -26,5 +25,10 @@ def show_render(request):
         # return response
         # else:
         #     messages.info(request, "Username atau Password salah!")
-    context = {}
+
+    # change this onto all sponsor yang atletnya belum daftar
+    sponsor = Sponsor.objects.all()
+    # for m in sponsor:
+    #     print(m.nama_brand)
+    context = {"sponsor_list": sponsor}
     return render(request, "daftar-sponsor.html", context)
