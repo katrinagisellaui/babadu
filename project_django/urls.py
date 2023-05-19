@@ -22,5 +22,7 @@ urlpatterns = [
     path('athlete-qualification/', include('cru_tes_kualif_atlet.urls')),
     path('athlete-registration/', include('cr_daftar_atlet.urls')),
     path('sponsor-registration/', include('c_daftar_sponsor.urls')),
-
+    path('login/', include('login.urls')),
+    path('dashboard/', include('dashboard.urls')),
+    path('pengguna/', include('cru_pengguna.urls')),
 ]
