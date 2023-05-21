@@ -4,10 +4,10 @@
 {% block content %}
 
 <head>
-  <title>CR DAFTAR ATLET (PELATIH)</title>
-  <!-- <link rel="stylesheet" href="{% static 'css/cr_daftar_atlet/style.css' %}"> -->
-  <script src="{% static 'js/cr_daftar_atlet/script.js' %}"></script>
-
+  <title>CRU DAFTAR EVENT (ATLET)</title>
+  <!-- <link rel="stylesheet" href="{% static 'css/cru_tes_kualifikasi_atlet/style.css' %}"> -->
+  <script src="{% static 'js/cru_tes_kualifikasi_atlet/script.js' %}"></script>
+  
   <style>  
     /* Global Styles */
   body {
@@ -131,9 +131,8 @@
 
 </head>
 <body>
-
   <nav class="navbar navbar-expand-lg navbar-light">
-    <a class="navbar-brand" href="#">Navbar Pelatih</a>
+    <a class="navbar-brand" href="#">Navbar Atlet</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -143,10 +142,16 @@
           <a class="nav-link" href="#">Dashboard</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Daftar Atlet</a>
+          <a class="nav-link" href="#">Tes Kualifikasi</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">List Atlet</a>
+          <a class="nav-link" href="#">Daftar Event</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Enrolled Event</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Daftar Sponsor</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Logout</a>
@@ -155,28 +160,48 @@
     </div>
   </nav>
 
-  <div class="container" id="registrationForm">
-    <h1>DAFTAR ATLET</h1>
-    <form id="registerForm" method="POST">
-      {% csrf_token %}
-      <div>
-        <label for="athleteDropdown">Atlet yang mau didaftarkan:</label>
-        <select name="athleteDropdown" required>
-          <option value="">Pilih atlet</option>
-          <option value="Sukiman1">Sukiman1</option>
-          <option value="Sukiman2">Sukiman2</option>
-          <!-- Tambahkan opsi atlet lainnya -->
-        </select>
+
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col">
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Indonesia Open</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Stadium GBK</h6>
+            <p class="card-text">Hadiah: Rp 20.000.000,00</p>
+            <p class="card-text">Kategori Superseries: A</p>
+            <p class="card-text">Kategori Spesialisasi: Ganda Putri</p>
+            <p class="card-text">Tanggal Mulai: 24-01-2024</p>
+            <p class="card-text">Tanggal Mulai: 24-01-2025</p>
+            <p class="card-text">Kapasitas: 200</p>
+            <a href="#" class="btn btn-primary">Unenrolled</a>
+          </div>
+        </div>
       </div>
-      <button type="submit" >SUBMIT</button>
-    </form>
+      <div class="col">
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Indonesia Open</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Stadium GBK</h6>
+            <p class="card-text">Hadiah: Rp 20.000.000,00</p>
+            <p class="card-text">Kategori Superseries: A</p>
+            <p class="card-text">Kategori Spesialisasi: Ganda Putri</p>
+            <p class="card-text">Tanggal Mulai: 24-01-2024</p>
+            <p class="card-text">Tanggal Mulai: 24-01-2025</p>
+            <p class="card-text">Kapasitas: 200</p>
+            <a href="#" class="btn btn-primary">Unenrolled</a>
+          </div>
+        </div>
+      </div>
+     
+    </div>
   </div>
+
 
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-
 </body>
 </html>
 

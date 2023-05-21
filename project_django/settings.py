@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'cr_daftar_atlet',
     'c_daftar_sponsor',
     'r_list_event',
+    'cru_daftar_event',
+    'rd_enrolled_event',
 ]
 
 MIDDLEWARE = [
