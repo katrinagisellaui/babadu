@@ -46,6 +46,11 @@ INSTALLED_APPS = [
     'r_list_event',
     'cru_daftar_event',
     'rd_enrolled_event',
+    'login',
+    'dashboard',
+    'cru_pengguna',
+    'navbar',
+    'r_enrolled_partai_kompetisi_event'
 ]
 
 MIDDLEWARE = [
@@ -84,9 +89,17 @@ WSGI_APPLICATION = 'project_django.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # }
+
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'babadu',  # name of the database
+        'USER': 'postgres',  # username of the databasee
+        'PASSWORD': 'postgres',  # password of your postgresql app
+        'HOST': 'localhost'  # name of the host
     }
 }
 

@@ -1,3 +1,4 @@
+from django.db import connection
 from django.shortcuts import render
 
 from c_daftar_sponsor.models import Sponsor
@@ -15,7 +16,7 @@ def show_render(request):
         }
 
         print(sponsor)
-        response = render(request, "daftar-sponsor.html", context)
+        response = render(request, "list-sponsor.html", context)
         return response
 
         # if user is not None:
@@ -32,3 +33,20 @@ def show_render(request):
     #     print(m.nama_brand)
     context = {"sponsor_list": sponsor}
     return render(request, "daftar-sponsor.html", context)
+
+
+def show_list(request):
+    sponsor = Sponsor.objects.all()
+
+    cursor = connection.cursor()
+    cursor.execute("SELECT nama_brand, tgl_mulai, tgl_selesai \
+                   FROM sponsor, atlet_sponsor\
+                   WHERE id_sponsor = id")  # add where sponsor user login
+    sponsor = cursor.fetchall()
+    # print(sponsor)
+
+    # for m in sponsor:
+    #     print(m.nama_brand)
+
+    context = {"sponsor_list": sponsor}
+    return render(request, "list-sponsor.html", context)

@@ -25,5 +25,8 @@ urlpatterns = [
     path('r_list_event/', include('r_list_event.urls')),
     path('cru_daftar_event/', include('cru_daftar_event.urls')),
     path('rd_enrolled_event/', include('rd_enrolled_event.urls')),
+    path('login/', include('login.urls', namespace='login')),
+    path('dashboard/', include('dashboard.urls')),
+    path('pengguna/', include('cru_pengguna.urls', namespace='cru_pengguna')),
 
 ]
