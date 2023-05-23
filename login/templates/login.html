@@ -25,12 +25,31 @@
     </style>
   </head>
   <body>
+    {% if messages %}
+    <ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
     <div class="container">
       <div class="center-screen">
         <h1>BABADU - 7</h1>
         <div class="container">
-          <button type="button" class="btn btn-success">Login</button>
-          <button type="button" class="btn btn-success">Register</button>
+          <button type="button" class="btn btn-success">
+            <a
+              href="./pilih_login "
+              style="text-decoration: none; color: #ffffff"
+              >Login</a
+            >
+          </button>
+          <button type="button" class="btn btn-success">
+            <a
+              href="http://localhost:8000/pengguna/"
+              style="text-decoration: none; color: #ffffff"
+              >Register</a
+            >
+          </button>
         </div>
       </div>
     </div>

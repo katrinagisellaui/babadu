@@ -1,0 +1,207 @@
+{% extends 'base.html' %} 
+{% load static %}
+
+{% block content %}
+
+<head>
+  <title>CRU DAFTAR EVENT (ATLET)</title>
+  <!-- <link rel="stylesheet" href="{% static 'css/cru_tes_kualifikasi_atlet/style.css' %}"> -->
+  <script src="{% static 'js/cru_tes_kualifikasi_atlet/script.js' %}"></script>
+  
+  <style>  
+    /* Global Styles */
+  body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      text-align: center; /* Menyentrumkan teks dalam container */    
+    }
+    
+    .vertical-center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+  
+    h1 {
+      margin-top: 0;
+      text-align: center; /* Menyentrumkan teks h1 */
+    }
+    
+    form div {
+      margin-bottom: 10px;
+      text-align: center; /* Menyentrumkan elemen dalam form */
+    }
+    
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+    
+    
+    /* Styling for radio button labels */
+    input[type="radio"] + label {
+      display: inline-block;
+      padding: 5px 10px;
+      background-color: #f8f9fa;
+      border: 1px solid #ccc;
+      cursor: pointer;
+    }
+    
+    /* Styling for selected radio button labels */
+    input[type="radio"]:checked + label {
+      background-color: #007bff;
+      color: #fff;
+    }
+    
+    /* Styling the Body element i.e. Color,
+      Font, Alignment */
+      body {
+          background-color: #f8f9fa;
+          font-family: Verdana;
+          text-align: center;
+      }
+    
+      /* Styling the Form (Color, Padding, Shadow) */
+      form {
+          background-color: #fff;
+          max-width: 500px;
+          margin: 50px auto;
+          padding: 30px 20px;
+          box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+      }
+    
+      /* Styling form-control Class */
+      .form-control {
+          text-align: left;
+          margin-bottom: 25px;
+      }
+    
+      /* Styling form-control Label */
+      .form-control label {
+          display: block;
+          margin-bottom: 10px;
+      }
+    
+      /* Styling form-control input,
+      select, textarea */
+      .form-control input,
+      .form-control select,
+      .form-control textarea {
+          border: 1px solid #777;
+          border-radius: 2px;
+          font-family: inherit;
+          padding: 10px;
+          display: block;
+          width: 95%;
+      }
+    
+      /* Styling form-control Radio
+      button and Checkbox */
+      .form-control input[type="radio"],
+      .form-control input[type="checkbox"] {
+          display: inline-block;
+          width: auto;
+      }
+    
+      /* Styling Button */
+      button {
+          background-color: #05c46b;
+          border: 1px solid #777;
+          border-radius: 2px;
+          font-family: inherit;
+          font-size: 21px;
+          display: block;
+          width: 100%;
+          margin-top: 50px;
+          margin-bottom: 20px;
+      }
+    </style>
+
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="#">Navbar Atlet</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Tes Kualifikasi</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Daftar Event</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Enrolled Event</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Daftar Sponsor</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <table class="table">
+
+    <thead>
+      <tr>
+        <th colspan="4">DAFTAR EVENT</th>
+      </tr>
+      <tr>
+        <th scope="col">Nama Stadium</th>
+        <th scope="col">Negara</th>
+        <th scope="col">Kapasitas</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">GBK</th>
+        <td>INDONESIA</td>
+        <td>8</td>
+        <td>
+          <!-- <button type="button" class="btn btn-primary">Mulai</button> -->
+          <a href="cru_daftar_event_2.html" class="btn btn-primary" role="button">Pilih</a>
+
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Senayan</th>
+        <td>INDONESIA</td>
+        <td>16</td>
+        <td>
+            <a href="#" class="btn btn-primary" role="button">Pilih</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+{% endblock content %}

@@ -25,6 +25,13 @@
     </style>
   </head>
   <body>
+    {% if messages %}
+    <ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
     <nav class="navbar navbar-expand-lg navbar-light">
       <a class="navbar-brand" href="#">Dashboard Atlet</a>
       <button
@@ -56,23 +63,23 @@
             <a class="nav-link" href="#">Daftar Sponsor</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Logout</a>
+            <a class="nav-link" href="{% url 'login:logout_user' %}">Logout</a>
           </li>
         </ul>
       </div>
     </nav>
-    <div class="container-fluid pt-3" style="text-align: left;">
-      <h5> Nama Lengkap : Alfreda Skeen </h5>
-      <h5> Negara : Poland </h5>
-      <h5> Email : askeen0@last.fm </h5>
-      <h5> Tanggal Lahir : 10/22/1992</h5>
-      <h5> Play (Right/Left Hand) : Left</h5>
-      <h5> Tinggi Badan: 180</h5>
-      <h5> Jenis Kelamin: Male</h5>
-      <h5> Pelatih : -</h5>
-      <h5> Status :  Not Qualified</h5>
-      <h5> World Rank : -</h5>
-      <h5> Total Poin : 0</h5>
+    <div class="container-fluid pt-3" style="text-align: left">
+      <h5>Nama Lengkap : Alfreda Skeen</h5>
+      <h5>Negara : Poland</h5>
+      <h5>Email : askeen0@last.fm</h5>
+      <h5>Tanggal Lahir : 10/22/1992</h5>
+      <h5>Play (Right/Left Hand) : Left</h5>
+      <h5>Tinggi Badan: 180</h5>
+      <h5>Jenis Kelamin: Male</h5>
+      <h5>Pelatih : -</h5>
+      <h5>Status : Not Qualified</h5>
+      <h5>World Rank : -</h5>
+      <h5>Total Poin : 0</h5>
     </div>
   </body>
 </html>
