@@ -5,7 +5,7 @@
 
 
 <head>
-  <title>CRU TES KUALIFIKASI (ATLET)</title>
+  <title>LIST EVENT (UMPIRE)</title>
   <!-- <link rel="stylesheet" href="{% static 'css/cru_tes_kualifikasi_atlet/style.css' %}"> -->
   <script src="{% static 'js/cru_tes_kualifikasi_atlet/script.js' %}"></script>
 
@@ -49,7 +49,7 @@ body {
     border: none;
     cursor: pointer;
   }
-  
+
   /* Hide radio buttons by default */
   input[type="radio"] {
     display: none;
@@ -132,12 +132,46 @@ body {
         margin-top: 50px;
         margin-bottom: 20px;
     }
+    .card {
+      background-color: #f5f5f5;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+    .card-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .card-list {
+      margin-bottom: 15px;
+    }
+
+    .card-list li {
+      list-style-type: disc;
+    }
+    .card-button {
+      background-color: #4caf50;
+      border: none;
+      border-radius: 4px;
+      color: white;
+      font-size: 16px;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      transition: background-color 0.3s;
+      width: 100%;
+    }
+
+    .card-button:hover {
+      background-color: #45a049;
+    }
   </style>
   
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light">
-    <a class="navbar-brand" href="#">Navbar Atlet</a>
+    <a class="navbar-brand" href="#">Navbar Umpire</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -147,16 +181,13 @@ body {
           <a class="nav-link" href="#">Dashboard</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Tes Kualifikasi</a>
+          <a class="nav-link" href="#">Pertandingan</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Daftar Event</a>
+          <a class="nav-link" href="#">Hasil Pertandingan</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Enrolled Event</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Daftar Sponsor</a>
+          <a class="nav-link" href="#">List Event</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Logout</a>
@@ -164,41 +195,52 @@ body {
       </ul>
     </div>
   </nav>
+  
+  <table class="table">
+    <thead class="center">
+      <tr>
+        <th colspan="6"> DAFTAR EVENT</th>
+      </tr>
+      
+      <tr>
+        <th scope="col">Nama Event</th>
+        <th scope="col">Total Hadiah</th>
+        <th scope="col">Tanggal Mulai</th>
+        <th scope="col">Kategori</th>
+        <th scope="col">Kapasitas</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Event A</th>
+        <td>Rp 5.000.000,00</td>
+        <td>12-04-2023</td>
+        <td>S200</td>
+        <td>3/8</td>
+        <td>
+          <a href="cru_daftar_event_2.html" class="btn btn-primary" role="button">Pilih</a>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Event B</th>
+        <td>Rp 4.000.000,00</td>
+        <td>23-04-2024</td>
+        <td>S300</td>
+        <td>8/8</td>
+        <td>
+          <a href="cru_daftar_event_2.html" class="btn btn-primary" role="button">Pilih</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
-  <div class="container" id="qualificationForm">
-    <h1>FORM DATA KUALIFIKASI</h1>
-    <form name="qualification" method="POST">
-      {% csrf_token %}
-      <div>
-        <label for="batchNumber">Nomor batch:</label>
-        <input type="text" name="batchNumber" required>
-      </div>
-      <div>
-        <label for="location">Tempat pelaksanaan:</label>
-        <select name="location" required>
-          <option value="">Pilih tempat</option>
-          <option value="Tempat A">Tempat A</option>
-          <option value="Tempat B">Tempat B</option>
-          <option value="Tempat C">Tempat C</option>
-        </select>
-      </div>
-      <div>
-        <label for="date">Tanggal pelaksanaan:</label>
-        <select name="date" required>
-          <option value="">Pilih tanggal</option>
-          <option value="2023-05-10">10 Mei 2023</option>
-          <option value="2023-05-15">15 Mei 2023</option>
-          <option value="2023-05-20">20 Mei 2023</option>
-        </select>
-      </div>
-      <button type="submit">NEXT</button>
-    </form>
-  </div>
+
+
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-</body>
 
 
 
