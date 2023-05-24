@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'cru_tes_kualif_atlet',
     'cr_daftar_atlet',
     'c_daftar_sponsor',
+    'pertandingan',
     'r_list_event',
     'cru_daftar_event',
     'rd_enrolled_event',
@@ -51,7 +52,6 @@ INSTALLED_APPS = [
     'cru_pengguna',
     'navbar',
     'r_enrolled_partai_kompetisi_event'
-]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

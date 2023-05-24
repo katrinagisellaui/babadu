@@ -22,11 +22,13 @@ urlpatterns = [
     path('athlete-qualification/', include('cru_tes_kualif_atlet.urls')),
     path('athlete-registration/', include('cr_daftar_atlet.urls')),
     path('sponsor-registration/', include('c_daftar_sponsor.urls')),
+    path('pertandingan/', include('pertandingan.urls')),
     path('r_list_event/', include('r_list_event.urls')),
     path('cru_daftar_event/', include('cru_daftar_event.urls')),
     path('rd_enrolled_event/', include('rd_enrolled_event.urls')),
     path('login/', include('login.urls', namespace='login')),
     path('dashboard/', include('dashboard.urls')),
     path('pengguna/', include('cru_pengguna.urls', namespace='cru_pengguna')),
+
 
 ]
