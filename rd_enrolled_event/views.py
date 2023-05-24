@@ -83,19 +83,18 @@ def delete_enrolled(request, no_peserta, event, tahun):
               BEFORE DELETE ON PESERTA_MENDAFTAR_EVENT FOR EACH ROW\
               EXECUTE PROCEDURE unenroll();".format(event, tahun, event, tahun, date.today(), date.today()))
 
-    # try:
-    print("masuk")
-    c.execute("Delete from peserta_mendaftar_event\
-            where nomor_peserta = {}\
-            and nama_event = '{}'\
-            and tahun = {};".format(no_peserta, event, tahun))
+    try:
+        c.execute("Delete from peserta_mendaftar_event\
+                where nomor_peserta = {}\
+                and nama_event = '{}'\
+                and tahun = {};".format(no_peserta, event, tahun))
 
-    c.execute("Delete from partai_peserta_kompetisi\
-            where nomor_peserta = {}\
-            and nama_event = '{}'\
-            and tahun_event = {};".format(no_peserta, event, tahun))
-    # except:
-    #     messages.warning(request, 'Maaf event sudah berjalan / selesai')
-    #     print('Maaf event sudah berjalan / selesai')
+        c.execute("Delete from partai_peserta_kompetisi\
+                where nomor_peserta = {}\
+                and nama_event = '{}'\
+                and tahun_event = {};".format(no_peserta, event, tahun))
+    except:
+        messages.warning(request, 'Maaf event sudah berjalan / selesai')
+        print('Maaf event sudah berjalan / selesai')
 
     return redirect("rd_enrolled_event:rd_enrolled_event_view")
