@@ -46,21 +46,69 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav">
           <li class="nav-item">
             <a class="nav-link" href="#">Dashboard</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Tes Kualifikasi</a>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown1"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Ujian Kualifikasi
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+              <a class="dropdown-item" href="#">List Ujian Kualifikasi</a>
+              <a class="dropdown-item" href="#">Riwayat Ujian Kualifikasi</a>
+            </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Daftar Event</a>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown2"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Event
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+              <a class="dropdown-item" href="#">Daftar Event</a>
+              <a class="dropdown-item" href="{% url 'rd_enrolled_event:rd_enrolled_event_view' %}">Enrolled Event</a>
+              <a class="dropdown-item" href="{% url 'r_enrolled_partai_kompetisi_event:show_list' %}">Enrolled Partai Kompetisi Event</a>
+            </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Enrolled Event</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Daftar Sponsor</a>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown3"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Sponsor
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
+              <a
+                class="dropdown-item"
+                href="{% url 'c_daftar_sponsor:show_render' %}"
+                >Daftar Sponsor</a
+              >
+              <a
+                class="dropdown-item"
+                href="{% url 'c_daftar_sponsor:show_list' %}"
+                >List Sponsor</a
+              >
+            </div>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'login:logout_user' %}">Logout</a>
@@ -68,6 +116,7 @@
         </ul>
       </div>
     </nav>
+  
     <div class="container-fluid pt-3" style="text-align: left">
       <h5>Nama Lengkap : Alfreda Skeen</h5>
       <h5>Negara : Poland</h5>
