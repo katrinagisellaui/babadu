@@ -1,3 +1,9 @@
+# VS Code setting
+.vscode
+
+# IntelliJ setting
+.idea
+
 # Virtual environments
 .env
 .venv

@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'cru_pengguna',
     'navbar',
     'r_enrolled_partai_kompetisi_event'
+]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -98,7 +99,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'babadu',  # name of the database
         'USER': 'postgres',  # username of the databasee
-        'PASSWORD': 'postgres',  # password of your postgresql app
+        'PASSWORD': 'erlanggaak03',  # password of your postgresql app
         'HOST': 'localhost'  # name of the host
     }
 }
