@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.db import connection
 from django.contrib import messages
 import psycopg2
 import locale
@@ -32,7 +33,6 @@ def search_path():
 def daftar_stadium(request):
     context = {}
     query_get_stadium = """
-    SET search_path to babadu;
     SELECT * FROM STADIUM;
     """
     db_connection = connect_db()
@@ -52,7 +52,6 @@ def daftar_event(request, nama_stadium):
     WHERE E.tgl_mulai > CURRENT_DATE AND E.nama_stadium = %s
     """
     cursor = db_connection.cursor()
-    cursor.execute(search_path())
     cursor.execute(query_select_event, (nama_stadium,))
     tuple_event = cursor.fetchall()
     context = {'daftar_event': tuple_event, 'nama_stadium' : nama_stadium}
@@ -63,16 +62,13 @@ def daftar_partai(request, nama_stadium, nama_event, tahun_event):
     context = {}
     #Ganti pake id atlet login
     id_atlet = request.COOKIES.get("id")
-    print(id_atlet)
-
     db_connection = connect_db()
     cursor = db_connection.cursor()
-    cursor.execute(search_path())
     if (request.method == 'POST'):
         map_partai = {'Tunggal Putra':'TP', 'Tunggal Putri':'TW', 
                               'Ganda Putra':'GP', 'Ganda Putri':'GW', 
                               'Ganda Campuran':'GC'}
-        if ('Ganda' in request.POST.get('jenis')):
+        if ('Ganda' in request.POST['jenis']):
             try:
                 query_get_pasangan = """
                 SELECT id
@@ -81,17 +77,19 @@ def daftar_partai(request, nama_stadium, nama_event, tahun_event):
                 """
                 atlet_rank = get_atlet_rank(id_atlet, cursor)
                 jenis_partai = map_partai.get(request.POST['jenis'])
+                print(jenis_partai)
                 email_pasangan = request.POST['pasangan']
+                print(email_pasangan)
                 cursor.execute(query_get_pasangan, (email_pasangan,))
                 id_pasangan = cursor.fetchone()[0] #pasangan cuma 1
-                id_atlet_pasangan = cursor.execute(get_atlet_ganda_id(id_atlet, id_pasangan, cursor))
+                print(id_pasangan)
+                id_atlet_pasangan = get_atlet_ganda_id (id_atlet, id_pasangan, cursor)
                 if (id_atlet_pasangan is not None):
                     id_atlet_pasangan = id_atlet_pasangan[0]
                 else :
                     id_atlet_pasangan = str(uuid.uuid4())
                     insert_atlet_ganda(id_atlet, id_pasangan, id_atlet_pasangan)
                 nomor_peserta = get_nomor_peserta_ganda(cursor,id_atlet_pasangan)
-
                 if (nomor_peserta is not None):
                     nomor_peserta = nomor_peserta[0]
                 else:
@@ -193,16 +191,12 @@ def get_partai(nama_event, tahun_event, id_atlet, cursor):
 
     cursor.execute(query_list_partai, (nama_event, tahun_event))
     list_partai = cursor.fetchall()
-    print(list_partai)
-    print(nama_event)
-    print(tahun_event)
     map_partai = {'TP':'Tunggal Putra', 'TW':'Tunggal Putri', 'GP':'Ganda Putra', 'GW':'Ganda Putri', 'GC':'Ganda Campuran'}
 
     for i in range(len(list_partai)):
         cursor.execute(query_cek_partai_atlet, (list_partai[i][0], nama_event, tahun_event, id_atlet, list_partai[i][0], nama_event, tahun_event, id_atlet, list_partai[i][0], nama_event, tahun_event, id_atlet))
         list_partai[i] = (map_partai.get(list_partai[i][0]), list_partai[i][1], cursor.fetchone()[0])
 
-    print(list_partai)
     return list_partai
 
 def get_atlet(id_atlet, cursor):
@@ -214,7 +208,6 @@ def get_atlet(id_atlet, cursor):
     """
     cursor.execute(query_get_atlet, (id_atlet,))
     info_atlet = cursor.fetchone()
-    print(info_atlet)
     return info_atlet
 
 def get_atlet_ganda(id_atlet, nama_event, tahun_event, cursor):
@@ -253,12 +246,12 @@ def get_atlet_ganda(id_atlet, nama_event, tahun_event, cursor):
 def get_atlet_ganda_id(id_atlet, id_pasangan, cursor):
     query_get_pasangan_id = """
     SELECT A.id_atlet_ganda
-    FROM ATLET GANDA A
-    WHERE (A.id_atlet_kualifikasi = %s AND A.id_atlet_kualifikasi_2 = %s) OR (A.id_atlet_kualifikasi_2 = %s AND a.id_atlet_kualifikasi = %s)
+    FROM ATLET_GANDA A
+    WHERE (A.id_atlet_kualifikasi = %s AND A.id_atlet_kualifikasi_2 = %s) OR (A.id_atlet_kualifikasi_2 = %s AND A.id_atlet_kualifikasi = %s)
     """
-    cursor.execute(query_get_pasangan_id(id_atlet, id_pasangan, id_atlet, id_pasangan))
-    id_pasangan = cursor.fetchone()
-    return id_pasangan
+    cursor.execute(query_get_pasangan_id, (id_atlet, id_pasangan, id_atlet, id_pasangan))
+    result = cursor.fetchone()
+    return result
 
 def get_atlet_rank(id_atlet, cursor):
     query_get_rank = """
@@ -266,7 +259,7 @@ def get_atlet_rank(id_atlet, cursor):
     FROM ATLET_KUALIFIKASI A
     WHERE A.id_atlet = %s
     """
-    cursor.execute(query_get_rank(id_atlet,))
+    cursor.execute(query_get_rank, (id_atlet,))
     atlet_rank = cursor.fetchone()
     return atlet_rank
 
@@ -317,5 +310,4 @@ def insert_partai_peserta_kompetisi(cursor, jenis_partai, nama_event, tahun_even
     VALUES (%s,%s,%s,%s) 
     """
     cursor.execute(query_insert, (jenis_partai, nama_event, tahun_event, nomor_peserta))
-
 

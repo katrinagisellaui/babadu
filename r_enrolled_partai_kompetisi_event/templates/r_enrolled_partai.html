@@ -1,0 +1,288 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<html>
+  <head>
+    <title>R ENROLLED PARTAI KOMPETISI (ATLET)</title>
+    <!-- <link rel="stylesheet" href="{% static 'css/cr_daftar_atlet/style.css' %}"> -->
+    <script src="{% static 'js/cr_daftar_atlet/script.js' %}"></script>
+
+    <style>
+      /* Global Styles */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 850px;
+        margin: 0 auto;
+        padding: 20px;
+        text-align: center; /* Menyentrumkan teks dalam container */
+      }
+
+      .vertical-center {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+      }
+
+      h1 {
+        margin-top: 0;
+        text-align: center; /* Menyentrumkan teks h1 */
+      }
+
+      form div {
+        margin-bottom: 10px;
+        text-align: center; /* Menyentrumkan elemen dalam form */
+      }
+
+      button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+      }
+
+      /* Styling for radio button labels */
+      input[type="radio"] + label {
+        display: inline-block;
+        padding: 5px 10px;
+        background-color: #f8f9fa;
+        border: 1px solid #ccc;
+        cursor: pointer;
+      }
+
+      /* Styling for selected radio button labels */
+      input[type="radio"]:checked + label {
+        background-color: #007bff;
+        color: #fff;
+      }
+
+      /* Styling the Body element i.e. Color,
+      Font, Alignment */
+      body {
+        background-color: #f8f9fa;
+        font-family: Verdana;
+        text-align: center;
+      }
+
+      /* Styling the Form (Color, Padding, Shadow) */
+      form {
+        background-color: #fff;
+        max-width: 500px;
+        margin: 50px auto;
+        padding: 30px 20px;
+        box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+      }
+
+      /* Styling form-control Class */
+      .form-control {
+        text-align: left;
+        margin-bottom: 25px;
+      }
+
+      /* Styling form-control Label */
+      .form-control label {
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      /* Styling form-control input,
+      select, textarea */
+      .form-control input,
+      .form-control select,
+      .form-control textarea {
+        border: 1px solid #777;
+        border-radius: 2px;
+        font-family: inherit;
+        padding: 10px;
+        display: block;
+        width: 95%;
+      }
+
+      /* Styling form-control Radio
+      button and Checkbox */
+      .form-control input[type="radio"],
+      .form-control input[type="checkbox"] {
+        display: inline-block;
+        width: auto;
+      }
+
+      /* Styling Button */
+      button {
+        background-color: #05c46b;
+        border: 1px solid #777;
+        border-radius: 2px;
+        font-family: inherit;
+        font-size: 21px;
+        display: block;
+        width: 100%;
+        margin-top: 50px;
+        margin-bottom: 20px;
+      }
+
+      #table {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        background-color: #fff;
+        max-width: 1000px;
+        margin: 50px auto;
+        padding: 30px 20px;
+        box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+      }
+
+      #table td,
+      #table th {
+        border: 1px solid #ddd;
+        padding: 8px;
+      }
+
+      #table tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
+      #table tr:hover {
+        background-color: #ddd;
+      }
+
+      #table th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #04aa6d;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <a class="navbar-brand" href="#">Navbar Atlet</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Dashboard</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown1"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Ujian Kualifikasi
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+              <a class="dropdown-item" href="#">List Ujian Kualifikasi</a>
+              <a class="dropdown-item" href="#">Riwayat Ujian Kualifikasi</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown2"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Event
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+              <a class="dropdown-item" href="#">Daftar Event</a>
+              <a
+                class="dropdown-item"
+                href="{% url 'rd_enrolled_event:rd_enrolled_event_view' %}"
+                >Enrolled Event</a
+              >
+              <a
+                class="dropdown-item"
+                href="{% url 'r_enrolled_partai_kompetisi_event:show_list' %}"
+                >Enrolled Partai Kompetisi Event</a
+              >
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown3"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Sponsor
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
+              <a
+                class="dropdown-item"
+                href="{% url 'c_daftar_sponsor:show_render' %}"
+                >Daftar Sponsor</a
+              >
+              <a
+                class="dropdown-item"
+                href="{% url 'c_daftar_sponsor:show_list' %}"
+                >List Sponsor</a
+              >
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'login:logout_user' %}">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container" id="sponsorList">
+      <h1>ENROLLED PARTAI KOMPETISI EVENT</h1>
+      <table class="container" id="table">
+        <tr>
+          <th style="text-align: center">Nama Event</th>
+          <th style="text-align: center">Tahun</th>
+          <th style="text-align: center">Stadium</th>
+          <th style="text-align: center">Jenis Partai</th>
+          <th style="text-align: center">Kategori Superseries</th>
+          <th style="text-align: center">Tanggal Mulai</th>
+          <th style="text-align: center">Tanggal Selesai</th>
+        </tr>
+        {% for e in enrolled_list %}
+        <tr>
+          <td>{{ e.0 }}</td>
+          <td>{{ e.1 }}</td>
+          <td>{{ e.2 }}</td>
+          <td>{{ e.3 }}</td>
+          <td>{{ e.4 }}</td>
+          <td>{{ e.5 }}</td>
+          <td>{{ e.6 }}</td>
+        </tr>
+        {% endfor %}
+        <!-- Tambahkan baris atlet lainnya -->
+      </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  </body>
+</html>
+
+{% endblock content %}

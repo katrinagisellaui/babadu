@@ -238,21 +238,21 @@
         <th scope="col">Action</th>
       </tr>
     </thead>
-    <tbody>
       {% for partai in display_partai %}
-      <form action="." method="POST">
-        {% csrf_token %}
+      <tbody>
+      <form method="POST" action=".">
+          {% csrf_token %}
       <tr>
-        <th scope="row">{{partai.0}}</th>
+        <th scope="row">{{ partai.0 }}</th>
         <input type="hidden" name="jenis" value="{{ partai.0 }}" />
         <td>
           {% if partai.0 == "Ganda Putra" and display_atlet.1 or partai.0 == "Ganda Putri" and not display_atlet.1 %}
             <div class="form-group">
-              <select class="form-select" id="{{ partai.0 }}" name="pasangan">
+              <select class="form-select"  name="pasangan">
                 <option>Pilih Partner</option>
                 {% for partner in display_atlet_ganda %}
                     {% if partner.1 == data_atlet.1 %}
-                        <option value="{{partner.2}}">{{ partner.0 }}</option>
+                        <option value="{{partner.2}}" >{{ partner.0 }}</option>
                     {% endif %}
                 {% endfor %}
             </select>
@@ -283,9 +283,9 @@
           {% endif %}
         </td>
       </tr>
-      </form>
+    </form>
+  </tbody>
       {% endfor %}
-    </tbody>
   </table>
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
