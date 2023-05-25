@@ -29,6 +29,7 @@ urlpatterns = [
     path('login/', include('login.urls', namespace='login')),
     path('dashboard/', include('dashboard.urls')),
     path('pengguna/', include('cru_pengguna.urls', namespace='cru_pengguna')),
-
+    path('pertandingan/', include('pertandingan.urls')),
+    path('r_daftar_atlet/', include('r_daftar_atlet.urls')),
 
 ]

@@ -180,21 +180,68 @@ body {
         <li class="nav-item">
           <a class="nav-link" href="#">Dashboard</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pertandingan</a>
+        
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdown1"
+            role="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Atlet
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+            <a class="dropdown-item" href="{% url 'r_daftar_atlet:get_daftar_atlet' %}">Daftar Atlet</a>
+          </div>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Hasil Pertandingan</a>
+
+        
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdown1"
+            role="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Ujian Klasifikasi
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+            <a class="dropdown-item" href="#">Buat Ujian Klasifikasi</a>
+            <a class="dropdown-item" href="#">List Ujian Klasifikasi</a>
+            <a class="dropdown-item" href="#">Riwayat Ujian Klasifikasi</a>
+          </div>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">List Event</a>
+
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdown1"
+            role="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Event
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+            <a class="dropdown-item" href="{% url 'r_list_event:get_partai_kompetisi' %}">List Partai Kompetisi</a>
+          </div>
         </li>
+
         <li class="nav-item">
           <a class="nav-link" href="#">Logout</a>
         </li>
       </ul>
     </div>
   </nav>
+
   
   <table class="table">
     <thead>
@@ -203,8 +250,9 @@ body {
       </tr>
       <tr>
         <th scope="col">Nama Event</th>
+        <th scope="col">Tahun</th>
         <th scope="col">Stadium</th>
-        <th scope="col">Hadiah</th>
+        <th scope="col">Jenis Partai</th>
         <th scope="col">Kategori Superseries</th>
         <th scope="col">Tanggal Mulai</th>
         <th scope="col">Tanggal Selesai</th>
@@ -213,7 +261,31 @@ body {
       </tr>
     </thead>
     <tbody>
+      {% for a in partai_kompetisi_detail %}
+      {% if a.7 > 0%}
+
+      </tr>
       <tr>
+        <td>{{ a.0 }}</td>
+        <td>{{ a.1 }}</td>
+        <td>{{ a.2 }}</td>
+        <td>{{ a.3 }}</td>
+        <td>{{ a.4 }}</td>
+        <td>{{ a.5 }}</td>
+        <td>{{ a.6 }}</td>
+        <td>{{ a.7 }}/{{ a.8 }}</td>
+        {% if a.7 == a.8 %}
+        <td>
+          <td><a href="{% url 'r_list_event:lihat_hasil' nama_event=a.0 tahun_event=a.1 jenis_partai=a.3 %}" class="btn btn-outline-primary btn-sm">Hasil Pertandingan</a></td>
+          <td><a href="#" class="btn btn-outline-primary btn-sm">Mulai</a></td>
+        </td>
+        {% endif %}
+
+      </tr>
+      {% endif %}
+
+      {% endfor %}
+      <!-- <tr>
         <th scope="row">Indonesia Open</th>
         <td>GBK</td>
         <td>Rp 50.000.000,00</td>
@@ -238,7 +310,7 @@ body {
           <a href="#" class="btn btn-primary" role="button">Mulai</a>
 
         </td>
-      </tr>
+      </tr> -->
     </tbody>
   </table>
 

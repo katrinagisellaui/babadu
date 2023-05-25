@@ -51,7 +51,11 @@ INSTALLED_APPS = [
     'dashboard',
     'cru_pengguna',
     'navbar',
-    'r_enrolled_partai_kompetisi_event'
+    'r_enrolled_partai_kompetisi_event',
+    'r_daftar_atlet',
+
+
+]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

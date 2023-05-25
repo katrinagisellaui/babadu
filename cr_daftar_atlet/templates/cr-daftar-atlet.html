@@ -161,10 +161,12 @@
       {% csrf_token %}
       <div>
         <label for="athleteDropdown">Atlet yang mau didaftarkan:</label>
-        <select name="athleteDropdown" required>
+        <select name="athleteDropdown" required id = "athleteDropdown">
           <option value="">Pilih atlet</option>
-          <option value="Sukiman1">Sukiman1</option>
-          <option value="Sukiman2">Sukiman2</option>
+          {% for key, value in blm_dilatih %}
+          <option value="{{ key }}">{{ value }}</option>
+          {% endfor %}
+          <!-- <option value="Sukiman2">Sukiman2</option> -->
           <!-- Tambahkan opsi atlet lainnya -->
         </select>
       </div>

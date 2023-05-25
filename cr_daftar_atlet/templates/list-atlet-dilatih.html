@@ -5,7 +5,7 @@
 
 <html>
 <head>
-  <title>R DAFTAR ATLET (UMPIRE)</title>
+  <title>CR DAFTAR ATLET (PELATIH)</title>
   <!-- <link rel="stylesheet" href="{% static 'css/cr_daftar_atlet/style.css' %}"> -->
   <script src="{% static 'js/cr_daftar_atlet/script.js' %}"></script>
 
@@ -163,7 +163,7 @@
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="#">Navbar Umpire</a>
+        <a class="navbar-brand" href="#">Navbar Pelatih</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -172,61 +172,12 @@
             <li class="nav-item">
               <a class="nav-link" href="#">Dashboard</a>
             </li>
-            
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdown1"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Atlet
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                <a class="dropdown-item" href="#">Daftar Atlet</a>
-              </div>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Daftar Atlet</a>
             </li>
-
-            
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdown1"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Ujian Klasifikasi
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                <a class="dropdown-item" href="#">Buat Ujian Klasifikasi</a>
-                <a class="dropdown-item" href="#">List Ujian Klasifikasi</a>
-                <a class="dropdown-item" href="#">Riwayat Ujian Klasifikasi</a>
-              </div>
+            <li class="nav-item">
+              <a class="nav-link" href="#">List Atlet</a>
             </li>
-
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdown1"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Event
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                <a class="dropdown-item" href="{% url 'r_list_event:get_partai_kompetisi' %}">List Partai Kompetisi</a>
-              </div>
-            </li>
-
             <li class="nav-item">
               <a class="nav-link" href="#">Logout</a>
             </li>
@@ -257,106 +208,26 @@
   </div> -->
 
   <div class="container" id="athleteList">
-    <h1> DAFTAR ATLET </h1>
-    <h1>ATLET KUALIFIKASI</h1>
+    <h1>LIST ATHLETE DILATIH</h1>
     <table class="container" id="table">
       <tr>
-        <th style="text-align: center;">Nama</th>
-        <th style="text-align: center;">Tanggal Lahir</th>
-        <th style="text-align: center;">Negara Asal</th>
-        <th style="text-align: center;">Play Right</th>
-        <th style="text-align: center;">Height</th>
-        <th style="text-align: center;">World Rank</th>
-        <th style="text-align: center;">World Tour Rank</th>
-        <th style="text-align: center;">Jenis Kelamin</th>
-        <th style="text-align: center;">Total Point</th>
-
-        {% for a in atlet_kualif_list %}
+        <th style="text-align: center">Nama Atlet</th>
+        <th style="text-align: center">Email</th>
+        <th style="text-align: center">World Rank</th>
       </tr>
+      {% for s in atlet_dilatih %}
       <tr>
-        <td>{{ a.0 }}</td>
-        <td>{{ a.1 }}</td>
-        <td>{{ a.2 }}</td>
-        <td>{{ a.3 }}</td>
-        <td>{{ a.4 }}</td>
-        <td>{{ a.5 }}</td>
-        <td>{{ a.6 }}</td>
-        <td>{{ a.7 }}</td>
-        <td>{{ a.8 }}</td>
-
+        <td>{{ s.0 }}</td>
+        <td>{{ s.1 }}</td>
+        <td>{{ s.2 }}</td>
       </tr>
       {% endfor %}
-      <!-- <tr>
-        <td>Sukiman2</td>
-        <td>Sukiman2@gmail.com</td>
-        <td>2</td>
-      </tr> -->
-      <!-- Tambahkan baris atlet lainnya -->
-    </table>
-
-    <!-- non kualifikasi -->
-    <h1>ATLET NON KUALIFIKASI</h1>
-    <table class="container" id="table">
-      <tr>
-        <th style="text-align: center;">Nama</th>
-        <th style="text-align: center;">Tanggal Lahir</th>
-        <th style="text-align: center;">Negara Asal</th>
-        <th style="text-align: center;">Play Right</th>
-        <th style="text-align: center;">Height</th>
-        <th style="text-align: center;">World Rank</th>
-        <th style="text-align: center;">Jenis Kelamin</th>
-        <th style="text-align: center;">Total Point</th>
-
-        {% for a in atlet_nonkualif_list %}
-      </tr>
-      <tr>
-        <td>{{ a.0 }}</td>
-        <td>{{ a.1 }}</td>
-        <td>{{ a.2 }}</td>
-        <td>{{ a.3 }}</td>
-        <td>{{ a.4 }}</td>
-        <td>{{ a.5 }}</td>
-        <td>{{ a.6 }}</td>
-        <td>{{ a.7 }}</td>
-
-      </tr>
-      {% endfor %}
-      <!-- <tr>
-        <td>Sukiman2</td>
-        <td>Sukiman2@gmail.com</td>
-        <td>2</td>
-      </tr> -->
-      <!-- Tambahkan baris atlet lainnya -->
-    </table>
-
-    <!-- ganda -->
-    <h1>ATLET GANDA</h1>
-    <table class="container" id="table">
-      <tr>
-        <th style="text-align: center;">ID Atlet Ganda</th>
-        <th style="text-align: center;">Nama Atlet 1</th>
-        <th style="text-align: center;">Nama Atlet 2</th>
-        <th style="text-align: center;">Total Point</th>
-
-        {% for a in atlet_ganda_list %}
-      </tr>
-      <tr>
-        <td>{{ a.0 }}</td>
-        <td>{{ a.1 }}</td>
-        <td>{{ a.2 }}</td>
-        <td>{{ a.3 }}</td>
-        
-
-      </tr>
-      {% endfor %}
-      <!-- <tr>
-        <td>Sukiman2</td>
-        <td>Sukiman2@gmail.com</td>
-        <td>2</td>
-      </tr> -->
       <!-- Tambahkan baris atlet lainnya -->
     </table>
   </div>
+
+
+
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
