@@ -3,8 +3,9 @@
 
 {% block content %}
 
+<html>
 <head>
-  <title>CR DAFTAR ATLET (PELATIH)</title>
+  <title>CR LATIH ATLET (PELATIH)</title>
   <!-- <link rel="stylesheet" href="{% static 'css/cr_daftar_atlet/style.css' %}"> -->
   <script src="{% static 'js/cr_daftar_atlet/script.js' %}"></script>
 
@@ -127,6 +128,35 @@
           margin-top: 50px;
           margin-bottom: 20px;
       }
+
+        #table {
+          font-family: Arial, Helvetica, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+          background-color: #fff;
+          max-width: 1000px;
+          margin: 50px auto;
+          padding: 30px 20px;
+          box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+      }
+
+
+        #table td, #table th {
+          border: 1px solid #ddd;
+          padding: 8px;
+        }
+
+        #table tr:nth-child(even){background-color: #f2f2f2;}
+
+        #table tr:hover {background-color: #ddd;}
+
+        #table th {
+          padding-top: 12px;
+          padding-bottom: 12px;
+          text-align: left;
+          background-color: #04AA6D;
+          color: white;
+        }
     </style>
 
 </head>
@@ -159,24 +189,48 @@
     </div>
   </nav>
 
-  <div class="container" id="registrationForm">
-    <h1>DAFTAR ATLET</h1>
-    <form id="registerForm" method="POST">
-      {% csrf_token %}
-      <div>
-        <label for="athleteDropdown">Atlet yang mau didaftarkan:</label>
-        <select name="athleteDropdown" required id = "athleteDropdown">
-          <option value="">Pilih atlet</option>
-          {% for key, value in blm_dilatih %}
-          <option value="{{ key }}">{{ value }}</option>
-          {% endfor %}
-          <!-- <option value="Sukiman2">Sukiman2</option> -->
-          <!-- Tambahkan opsi atlet lainnya -->
-        </select>
-      </div>
-      <button type="submit" >SUBMIT</button>
-    </form>
+  <!-- <div class="container" id="athleteList">
+    <h1>LIST ATLET</h1>
+    <table class="container" id="table">
+      <tr>
+        <th style="text-align: center;">Nama Atlet</th>
+        <th style="text-align: center;">Email</th>
+        <th style="text-align: center;">World rank</th>
+      </tr>
+      <tr>
+        <td>Sukiman1</td>
+        <td>Sukiman1@gmail.com</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>Sukiman2</td>
+        <td>Sukiman2@gmail.com</td>
+        <td>2</td>
+      </tr>
+      Tambahkan baris atlet lainnya -->
+    <!-- </table>
+  </div> -->
+
+  <div class="container" id="athleteList">
+    <h1>LIST ATHLETE DILATIH</h1>
+    <table class="container" id="table">
+      <tr>
+        <th style="text-align: center">Nama Atlet</th>
+        <th style="text-align: center">Email</th>
+        <th style="text-align: center">World Rank</th>
+      </tr>
+      {% for s in atlet_dilatih %}
+      <tr>
+        <td>{{ s.0 }}</td>
+        <td>{{ s.1 }}</td>
+        <td>{{ s.2 }}</td>
+      </tr>
+      {% endfor %}
+      <!-- Tambahkan baris atlet lainnya -->
+    </table>
   </div>
+
+
 
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
