@@ -1,136 +1,132 @@
-{% extends 'base.html' %} 
-{% load static %}
-
-{% block content %}
-
+{% extends 'base.html' %} {% load static %} {% block content %}
 
 <head>
   <title>LIST EVENT (UMPIRE)</title>
   <!-- <link rel="stylesheet" href="{% static 'css/cru_tes_kualifikasi_atlet/style.css' %}"> -->
   <script src="{% static 'js/cru_tes_kualifikasi_atlet/script.js' %}"></script>
 
-  <style>  
-  /* Global Styles */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center; /* Menyentrumkan teks dalam container */    
-  }
-  
-  .vertical-center {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
+  <style>
+    /* Global Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
 
-  h1 {
-    margin-top: 0;
-    text-align: center; /* Menyentrumkan teks h1 */
-  }
-  
-  form div {
-    margin-bottom: 10px;
-    text-align: center; /* Menyentrumkan elemen dalam form */
-  }
-  
-  button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-  }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      text-align: center; /* Menyentrumkan teks dalam container */
+    }
 
-  /* Hide radio buttons by default */
-  input[type="radio"] {
-    display: none;
-  }
-  
-  /* Styling for radio button labels */
-  input[type="radio"] + label {
-    display: inline-block;
-    padding: 5px 10px;
-    background-color: #f8f9fa;
-    border: 1px solid #ccc;
-    cursor: pointer;
-  }
-  
-  /* Styling for selected radio button labels */
-  input[type="radio"]:checked + label {
-    background-color: #007bff;
-    color: #fff;
-  }
-  
-  /* Styling the Body element i.e. Color,
+    .vertical-center {
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+    }
+
+    h1 {
+      margin-top: 0;
+      text-align: center; /* Menyentrumkan teks h1 */
+    }
+
+    form div {
+      margin-bottom: 10px;
+      text-align: center; /* Menyentrumkan elemen dalam form */
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* Hide radio buttons by default */
+    input[type="radio"] {
+      display: none;
+    }
+
+    /* Styling for radio button labels */
+    input[type="radio"] + label {
+      display: inline-block;
+      padding: 5px 10px;
+      background-color: #f8f9fa;
+      border: 1px solid #ccc;
+      cursor: pointer;
+    }
+
+    /* Styling for selected radio button labels */
+    input[type="radio"]:checked + label {
+      background-color: #007bff;
+      color: #fff;
+    }
+
+    /* Styling the Body element i.e. Color,
     Font, Alignment */
     body {
-        background-color: #f8f9fa;
-        font-family: Verdana;
-        text-align: center;
+      background-color: #f8f9fa;
+      font-family: Verdana;
+      text-align: center;
     }
-  
+
     /* Styling the Form (Color, Padding, Shadow) */
     form {
-        background-color: #fff;
-        max-width: 500px;
-        margin: 50px auto;
-        padding: 30px 20px;
-        box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+      background-color: #fff;
+      max-width: 500px;
+      margin: 50px auto;
+      padding: 30px 20px;
+      box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
     }
-  
+
     /* Styling form-control Class */
     .form-control {
-        text-align: left;
-        margin-bottom: 25px;
+      text-align: left;
+      margin-bottom: 25px;
     }
-  
+
     /* Styling form-control Label */
     .form-control label {
-        display: block;
-        margin-bottom: 10px;
+      display: block;
+      margin-bottom: 10px;
     }
-  
+
     /* Styling form-control input,
     select, textarea */
     .form-control input,
     .form-control select,
     .form-control textarea {
-        border: 1px solid #777;
-        border-radius: 2px;
-        font-family: inherit;
-        padding: 10px;
-        display: block;
-        width: 95%;
+      border: 1px solid #777;
+      border-radius: 2px;
+      font-family: inherit;
+      padding: 10px;
+      display: block;
+      width: 95%;
     }
-  
+
     /* Styling form-control Radio
     button and Checkbox */
     .form-control input[type="radio"],
     .form-control input[type="checkbox"] {
-        display: inline-block;
-        width: auto;
+      display: inline-block;
+      width: auto;
     }
-  
+
     /* Styling Button */
     button {
-        background-color: #05c46b;
-        border: 1px solid #777;
-        border-radius: 2px;
-        font-family: inherit;
-        font-size: 21px;
-        display: block;
-        width: 100%;
-        margin-top: 50px;
-        margin-bottom: 20px;
+      background-color: #05c46b;
+      border: 1px solid #777;
+      border-radius: 2px;
+      font-family: inherit;
+      font-size: 21px;
+      display: block;
+      width: 100%;
+      margin-top: 50px;
+      margin-bottom: 20px;
     }
     .card {
       background-color: #f5f5f5;
@@ -167,12 +163,19 @@ body {
       background-color: #45a049;
     }
   </style>
-  
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light">
     <a class="navbar-brand" href="#">Navbar Umpire</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
@@ -195,96 +198,99 @@ body {
       </ul>
     </div>
   </nav>
-  
+
   <table class="table">
     <thead class="center">
       <tr>
-        <th colspan="6">PILIH KATEGORI</th>
+        <th colspan="6">FORM PEMILIHAN PARTAI KOMPETISI</th>
       </tr>
       <tr>
-        <th colspan="6">Event: Event A</th>
+        <th colspan="6">Event: {{display_event.0}}</th>
       </tr>
       <tr>
-        <th colspan="6">Hadiah: Rp 5.000.000,00</th>
+        <th colspan="6">Hadiah: Rp {{display_event.7}}</th>
       </tr>
       <tr>
-        <th colspan="6">Tanggal Mulai: 12-04-2023</th>
+        <th colspan="6">Tanggal Mulai: {{display_event.4}}</th>
       </tr>
       <tr>
-        <th colspan="6">Tanggal Selesai: 15-04-2023</th>
+        <th colspan="6">Tanggal Selesai: {{display_event.5}}</th>
       </tr>
       <tr>
-        <th colspan="6">Kategori: S200</th>
+        <th colspan="6">Kategori: {{display_event.6}}</th>
       </tr>
       <tr>
-        <th colspan="6">Kapasitas: 50/64</th>
+        <th colspan="6">
+          Kapasitas: {{display_stadium.2}} orang atau pasangan / partai
+        </th>
       </tr>
       <tr>
-        <th colspan="6">Stadium: GBK</th>
+        <th colspan="6">Stadium: {{display_event.2}}</th>
       </tr>
       <tr>
-        <th colspan="6">Negara Indonesia</th>
+        <th colspan="6">Negara: {{display_event.3}}</th>
       </tr>
-      
+
       <tr>
         <th scope="col">Kategori</th>
         <th scope="col">Partner</th>
-        <th scope="col"></th>
+        <th scope="col">Kapasitas</th>
+        <th scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
+      {% for partai in display_partai %}
+      <form action="." method="POST">
+        {% csrf_token %}
       <tr>
-        <th scope="row">Tunggal Putra</th>
-        <td>-</td>
+        <th scope="row">{{partai.0}}</th>
+        <input type="hidden" name="jenis" value="{{ partai.0 }}" />
         <td>
-          <a href="cru_daftar_event_2.html" class="btn btn-primary" role="button">Join</a>
+          {% if partai.0 == "Ganda Putra" and display_atlet.1 or partai.0 == "Ganda Putri" and not display_atlet.1 %}
+            <div class="form-group">
+              <select class="form-select" id="{{ partai.0 }}" name="pasangan">
+                <option>Pilih Partner</option>
+                {% for partner in display_atlet_ganda %}
+                    {% if partner.1 == data_atlet.1 %}
+                        <option value="{{partner.2}}">{{ partner.0 }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+          </div>
+          {% elif partai.0 == "Ganda Campuran" %}
+            <div class="form-group">
+              <select class="form-select" id="{{ partai.0 }}" name="pasangan">
+                  <option>Pilih Partner</option>
+                  {% for partner in display_atlet_ganda %}
+                      <option value="{{ partner.2 }}">{{ partner.0 }}</option>
+                  {% endfor %}
+              </select>
+            </div>
+          {% else %}
+          <b>-</b>
+          {% endif %}
+        </td>
+        <td> {{partai.1}} / {{display_stadium.2}}</td>
+        <td>
+          {% if 'Putra' in partai.0 and display_atlet.1 and not partai.2 %}
+              <button type="submit">Join</button>
+          {% elif 'Putri' in partai.0 and not display_atlet.1 and not partai.2 %}
+              <button type="submit">Join</button>
+          {% elif 'Campuran' in partai.0 and not partai.2 %}
+              <button type="submit">Join</button>
+          {% else %}
+              <p>-</p>
+          {% endif %}
         </td>
       </tr>
-      <tr>
-        <th scope="row">Ganda Putra</th>
-        <td>
-            <div>
-                <label for="athleteDropdown">Dropdown</label>
-                <select name="athleteDropdown" required>
-                  <option value="">Pilih atlet</option>
-                  <option value="Sukiman1">Sukiman1</option>
-                  <option value="Sukiman2">Sukiman2</option>
-                  <!-- Tambahkan opsi atlet lainnya -->
-                </select>
-              </div>
-        </td>
-        <td>
-          <a href="cru_daftar_event_2.html" class="btn btn-primary" role="button">Join</a>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">Ganda Putri</th>
-        <td>
-            <div>
-                <label for="athleteDropdown">Dropdown</label>
-                <select name="athleteDropdown" required>
-                  <option value="">Pilih atlet</option>
-                  <option value="Sukiman1">Sukiman1</option>
-                  <option value="Sukiman2">Sukiman2</option>
-                  <!-- Tambahkan opsi atlet lainnya -->
-                </select>
-              </div>
-        </td>
-        <td>
-          <a href="cru_daftar_event_2.html" class="btn btn-primary" role="button">Join</a>
-        </td>
-      </tr>
+      </form>
+      {% endfor %}
     </tbody>
   </table>
-
-
-
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
-
-
-
-{% endblock content %}
+  {% endblock content %}
+</body>

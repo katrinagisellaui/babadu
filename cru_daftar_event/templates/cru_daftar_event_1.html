@@ -174,24 +174,17 @@
       </tr>
     </thead>
     <tbody>
+      {% for stadium in daftar_stadium %}
       <tr>
-        <th scope="row">GBK</th>
-        <td>INDONESIA</td>
-        <td>8</td>
+        <th scope="row">{{stadium.0}}</th>
+        <td>{{stadium.3}}</td>
+        <td>{{stadium.2}}</td>
         <td>
           <!-- <button type="button" class="btn btn-primary">Mulai</button> -->
-          <a href="cru_daftar_event_2.html" class="btn btn-primary" role="button">Pilih</a>
-
+          <a href="{% url 'cru_daftar_event:daftar_event' nama_stadium=stadium.0 %}" class="btn btn-primary" role="button">Pilih</a>
         </td>
       </tr>
-      <tr>
-        <th scope="row">Senayan</th>
-        <td>INDONESIA</td>
-        <td>16</td>
-        <td>
-            <a href="#" class="btn btn-primary" role="button">Pilih</a>
-        </td>
-      </tr>
+      {% endfor %}
     </tbody>
   </table>
 
