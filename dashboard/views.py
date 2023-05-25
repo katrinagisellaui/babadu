@@ -51,7 +51,28 @@ def show_dashboard(request):
 
 
 def show_dashboard_pelatih(request):
-    return render(request, 'dashboard_pelatih.html')
+    cursor = connection.cursor()
+    query_select = """
+    SELECT P.tanggal_mulai
+    FROM PELATIH P
+    WHERE P.ID = %s
+    """
+
+    query_select_2 = """
+    SELECT string_agg(S.spesialisasi, ',')
+    FROM SPESIALISASI S, PELATIH_SPESIALISASI P
+    WHERE P.id_pelatih = %s AND S.id = P.id_spesialisasi
+    """
+    nama = request.COOKIES.get("nama")
+    email = request.COOKIES.get("email")
+    id = request.COOKIES.get("id")
+    cursor.execute(query_select, (id, ))
+    tanggal_mulai = cursor.fetchone()[0]
+    cursor.execute(query_select_2, (id, ))
+    spesialisasi = cursor.fetchall()[0][0]
+    print(spesialisasi)
+    context = {"nama":nama, "email":email, "tanggal_mulai":tanggal_mulai, "spesialisasi":spesialisasi}
+    return render(request, 'dashboard_pelatih.html', context=context)
 
 
 def show_dashboard_umpire(request):
