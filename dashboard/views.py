@@ -3,6 +3,11 @@ from django.db import connection
 from django.shortcuts import render
 from django.db import connection
 import psycopg2
+from django.shortcuts import render
+from django.db import connection
+from django.shortcuts import render
+from django.shortcuts import render, redirect
+
 
 # Create your views here.
 
