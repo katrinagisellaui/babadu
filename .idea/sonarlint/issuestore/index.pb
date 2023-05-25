@@ -3,8 +3,6 @@
 .c_daftar_sponsor/templates/daftar-sponsor.html,8\b\8b06e0d4cfbd70f77d14e7a7d1822431917db968
 J
 project_django/__init__.py,e\6\e6f30cbcb4dd33c7b7df3802830b86b6303747ed
-C
-templates/base.html,d\a\da7c237b85a69c00a9ab8c189bf63e22070fcac3
 D
 example_app/views.py,1\d\1d842d9bc946daadc74981c71a88486966646939
 P
@@ -29,8 +27,6 @@ K
 .cr_daftar_atlet/templates/cr-daftar-atlet.html,7\1\713a3de2cd8f26da1dc99f1346c2be32d82bc412
 Y
 )cr_daftar_atlet/templates/list-atlet.html,8\a\8a049287d467f8bcc1bb6c9bbafa511c5b312213
-M
-cru_tes_kualif_atlet/views.py,b\2\b287aa753f8e51d7b9b885a363685dfd4a62ebdb
 I
 cr_daftar_atlet/models.py,b\d\bdac10533bfd0812dacb2fa8638060f98208f3eb
 h
@@ -43,10 +39,6 @@ H
 cr_daftar_atlet/views.py,a\b\ab2f37efb40e35e7df4a1fc4ff4455d3c54f3498
 G
 cr_daftar_atlet/urls.py,3\3\33fe95e6c09371d5eafc118e5d3774f7890dcaa8
-F
-project_django/urls.py,7\8\78559949c282a9647fc6053d07756d1f80799b6e
-J
-project_django/settings.py,1\5\15795c604e0e2336db125085a0b95e67435e777a
 W
 'pertandingan/migrations/0001_initial.py,2\3\23e6ffa1de6f5abfbf4a7bc5b0a894d1f947e256
 S
@@ -57,3 +49,5 @@ F
 pertandingan/models.py,0\a\0ad9a1ceb5046c79bd60534ed613849e766d16ea
 D
 pertandingan/apps.py,0\f\0f7b863c3810ef29d6ede9a3ffe2ee1dd9118a95
+>
+login/tests.py,7\4\74625a49889006cebb6f162c42fe349f3b8ea2b7
