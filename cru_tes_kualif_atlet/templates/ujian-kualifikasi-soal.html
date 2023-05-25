@@ -223,7 +223,7 @@
       {% csrf_token %}
       {% for pertanyaan_data in pertanyaan %}
       <div>
-        <h5>Question {{forloop.counter}}</h5>
+        <h5>Question {{forloop.counter}}: {{pertanyaan_data.pertanyaan}}</h5>
         <input type="radio" name="question{{forloop.counter}}" value="{{pertanyaan_data.option.0}}"> {{pertanyaan_data.option.0}}<br>
         <input type="radio" name="question{{forloop.counter}}" value="{{pertanyaan_data.option.1}}"> {{pertanyaan_data.option.1}}<br>
         <input type="radio" name="question{{forloop.counter}}" value="{{pertanyaan_data.option.2}}"> {{pertanyaan_data.option.2}}<br>

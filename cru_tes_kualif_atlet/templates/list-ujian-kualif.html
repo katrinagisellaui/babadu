@@ -229,7 +229,7 @@
         <th>Batch</th>
         <th>Tempat Pelaksanaan</th>
         <th>Tanggal Pelaksanaan</th>
-        {% if role == 'ATLET' %}
+        {% if 'ATLET' in role %}
         <th>Action</th>
         {% endif %}
     </tr>
@@ -241,7 +241,7 @@
         <td>{{ ujian.1 }}</td>
         <td>{{ ujian.2 }}</td>
         <td>{{ ujian.3 }}</td>
-        {% if role == 'ATLET' %}
+        {% if 'ATLET' in role %}
         <td>
             <a href="{% url 'cru_tes_kualif_atlet:ujian-atlet' %}?tahun={{ujian.0}}&batch={{ujian.1}}&tempat={{ujian.2}}&tanggal={{ujian.3}}">[Ikuti]</a>
         </td>
