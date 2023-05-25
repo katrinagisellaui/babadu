@@ -20,10 +20,11 @@ def cru_daftar_event_views_3(request):
 
 def connect_db():
     db_connection = psycopg2.connect(
-        host="localhost",
-        database="babadu",
+        host="containers-us-west-128.railway.app",
+        database="railway",
         user="postgres",
-        password="kinger2001"
+        password="uerDeirCf7NJNyoYqW5Q",
+        port="6881",
     )
     return db_connection
 

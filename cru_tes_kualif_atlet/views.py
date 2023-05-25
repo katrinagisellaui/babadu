@@ -270,8 +270,8 @@ def create_pertanyaan():
 def connect_db():
     return psycopg2.connect(
         user="postgres",
-        password="erlanggaak03",
-        host="localhost",
-        port="5432",
-        database="babadu",
+        password="uerDeirCf7NJNyoYqW5Q",
+        host="containers-us-west-128.railway.app",
+        port="6881",
+        database="railway",
     )
