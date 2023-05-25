@@ -1,12 +1,6 @@
 
-^
-.c_daftar_sponsor/templates/daftar-sponsor.html,8\b\8b06e0d4cfbd70f77d14e7a7d1822431917db968
 J
 project_django/__init__.py,e\6\e6f30cbcb4dd33c7b7df3802830b86b6303747ed
-D
-example_app/views.py,1\d\1d842d9bc946daadc74981c71a88486966646939
-P
- example_app/templates/index.html,a\c\ac683f7c4a0f9f1acdd96f3b440e5d33d7dd2396
 I
 c_daftar_sponsor/tests.py,9\8\983a300d5de82fd79df480f31c44ded379b461c4
 I
@@ -29,12 +23,8 @@ Y
 )cr_daftar_atlet/templates/list-atlet.html,8\a\8a049287d467f8bcc1bb6c9bbafa511c5b312213
 I
 cr_daftar_atlet/models.py,b\d\bdac10533bfd0812dacb2fa8638060f98208f3eb
-h
-8cru_tes_kualif_atlet/fixtures/initial_wishlist_data.json,8\6\86bfeea4d0f5e418caef70ed3a4e377b8d98ece4
 S
 #static/js/cr_daftar_atlet/script.js,9\9\991f3710952bc407b674219a80f6522b71f68a64
-C
-example_app/urls.py,7\4\74a47511682538e93d31b8ee16e4b33b0cf46274
 H
 cr_daftar_atlet/views.py,a\b\ab2f37efb40e35e7df4a1fc4ff4455d3c54f3498
 G
