@@ -99,7 +99,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'babadu',  # name of the database
         'USER': 'postgres',  # username of the databasee
-        'PASSWORD': 'postgres',  # password of your postgresql app
+        'PASSWORD': 'kinger2001',  # password of your postgresql app
         'HOST': 'localhost'  # name of the host
     }
 }
