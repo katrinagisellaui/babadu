@@ -50,10 +50,21 @@ def login(request):
             role = None
             response = HttpResponseRedirect(reverse("login:login"))
             if (atlet != None):
-                response = HttpResponseRedirect(
-                    reverse("dashboard:show_dashboard"))
-                print("halo atlet")
-                role = "ATLET"
+                c.execute(
+                    "SELECT * FROM ATLET_NON_KUALIFIKASI WHERE id_atlet = '{}'".format(myuuid))
+                atlet = c.fetchone()
+                print(atlet)
+                if (atlet == None):
+                    response = HttpResponseRedirect(
+                        reverse("dashboard:show_dashboard"))
+                    role = "ATLET"
+                    print("halo atlet")
+                else:
+                    response = HttpResponseRedirect(
+                        reverse("dashboard:show_dashboard"))
+                    response.set_cookie("role", "atlet_non_kualif")
+                    role = "ATLET-NON"
+                    print("halo atlet non")
             if (pelatih != None):
                 response = HttpResponseRedirect(
                     reverse("dashboard:show_dashboard_pelatih"))
