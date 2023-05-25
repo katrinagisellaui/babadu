@@ -27,7 +27,7 @@ urlpatterns = [
     path('rd_enrolled_event/', include('rd_enrolled_event.urls',
          namespace='rd_enrolled_event')),
     path('', include('login.urls', namespace='login')),
-    path('dashboard/', include('dashboard.urls')),
+    path('dashboard/', include('dashboard.urls', namespace='dashboard')),
     path('pengguna/', include('cru_pengguna.urls', namespace='cru_pengguna')),
     path('r_enrolled_partai/', include('r_enrolled_partai_kompetisi_event.urls',
          namespace='r_enrolled_partai_kompetisi_event')),

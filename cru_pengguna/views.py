@@ -31,15 +31,6 @@ def show_umpire(request):
     return render(request, 'umpire.html')
 
 
-def create_task(request):
-    if request.method == "POST":
-        title = request.POST.get("title")
-        description = request.POST.get("description")
-
-        return HttpResponseRedirect(reverse("todolist:show_todolist"))
-    return render(request, "create-task.html")
-
-
 def register_atlet(request):
     if request.method == "POST":
         nama = request.POST.get("nama")
@@ -79,6 +70,10 @@ def register_atlet(request):
                   (id, tgl_lahir, Negara_Asal, play_right, height, jenis_kelamin)\
                   VALUES ('{}','{}','{}','{}','{}', '{}')".format(
             myuuid, birth, negara, play_bool, tinggi, gender_bool))
+
+        c.execute("INSERT INTO ATLET_NON_KUALIFIKASI \
+                VALUES ('{}')".format(
+            myuuid))
 
         messages.success(request, "Akun Atlet telah berhasil dibuat!")
         return redirect("login:login_home")

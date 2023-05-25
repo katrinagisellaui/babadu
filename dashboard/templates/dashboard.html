@@ -32,6 +32,11 @@
     {% endfor %}
     </ul>
     {% endif %}
+
+    
+
+    {% if role == "ATLET"%}
+
     <nav class="navbar navbar-expand-lg navbar-light">
       <a class="navbar-brand" href="#">Dashboard Atlet</a>
       <button
@@ -48,7 +53,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="#">Dashboard</a>
+            <a class="nav-link" href="{% url 'dashboard:show_dashboard' %}">Dashboard</a>
           </li>
           <li class="nav-item dropdown">
             <a
@@ -116,19 +121,65 @@
         </ul>
       </div>
     </nav>
+
+{% endif %}
+
+{% if role == "ATLET-NON"%}
+
+<nav class="navbar navbar-expand-lg navbar-light">
+  <a class="navbar-brand" href="#">Dashboard Atlet</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNav"
+    aria-controls="navbarNav"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'dashboard:show_dashboard' %}">Dashboard</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          id="navbarDropdown1"
+          role="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Ujian Kualifikasi
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+          <a class="dropdown-item" href="#">List Ujian Kualifikasi</a>
+          <a class="dropdown-item" href="#">Riwayat Ujian Kualifikasi</a>
+        </div>
+      </li>
+        <a class="nav-link" href="{% url 'login:logout_user' %}">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+{% endif %}
   
     <div class="container-fluid pt-3" style="text-align: left">
-      <h5>Nama Lengkap : Alfreda Skeen</h5>
-      <h5>Negara : Poland</h5>
-      <h5>Email : askeen0@last.fm</h5>
-      <h5>Tanggal Lahir : 10/22/1992</h5>
-      <h5>Play (Right/Left Hand) : Left</h5>
-      <h5>Tinggi Badan: 180</h5>
-      <h5>Jenis Kelamin: Male</h5>
-      <h5>Pelatih : -</h5>
-      <h5>Status : Not Qualified</h5>
-      <h5>World Rank : -</h5>
-      <h5>Total Poin : 0</h5>
+      <h5>Nama Lengkap : {{nama}}</h5>
+      <h5>Negara : {{negara}}</h5>
+      <h5>Email : {{email}}</h5>
+      <h5>Tanggal Lahir : {{tanggal}}</h5>
+      <h5>Play (Right/Left Hand) : {{play}}</h5>
+      <h5>Tinggi Badan: {{height}}</h5>
+      <h5>Jenis Kelamin: {{gender}}</h5>
+      <h5>Status : {{status}}</h5>
+      <h5>World Rank : {{rank}}</h5>
+      <h5>Total Poin : {{poin}}</h5>
     </div>
   </body>
 </html>
