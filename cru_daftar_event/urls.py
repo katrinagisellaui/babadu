@@ -4,9 +4,7 @@ from cru_daftar_event.views import *
 app_name = 'cru_daftar_event'
 
 urlpatterns = [
-    path('', cru_daftar_event_views, name='cru_daftar_event_views'),
-    path('2/', cru_daftar_event_views_2, name='cru_daftar_event_views_2'),
-    path('3/', cru_daftar_event_views_3, name='cru_daftar_event_views_3'),
-
-
+    path('', daftar_stadium, name='daftar_stadium'),
+    path('daftar_event/<str:nama_stadium>/', daftar_event, name='daftar_event'),
+    path('daftar_event/<str:nama_stadium>/<str:nama_event>/<int:tahun_event>/', daftar_partai, name='daftar_partai'),
 ]

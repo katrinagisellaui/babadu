@@ -2,7 +2,7 @@
 
 <html>
   <head>
-    <title>CR DAFTAR SPONSOR (ATLET)</title>
+    <title>R ENROLLED PARTAI KOMPETISI (ATLET)</title>
     <!-- <link rel="stylesheet" href="{% static 'css/cr_daftar_atlet/style.css' %}"> -->
     <script src="{% static 'js/cr_daftar_atlet/script.js' %}"></script>
 
@@ -15,7 +15,7 @@
       }
 
       .container {
-        max-width: 800px;
+        max-width: 850px;
         margin: 0 auto;
         padding: 20px;
         text-align: center; /* Menyentrumkan teks dalam container */
@@ -208,7 +208,7 @@
               Event
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-              <a class="dropdown-item" href="{% url 'cru_daftar_event:daftar_stadium' %}">Daftar Event</a>
+              <a class="dropdown-item" hhref="{% url 'cru_daftar_event:daftar_stadium' %}">Daftar Event</a>
               <a
                 class="dropdown-item"
                 href="{% url 'rd_enrolled_event:rd_enrolled_event_view' %}"
@@ -252,20 +252,27 @@
         </ul>
       </div>
     </nav>
-
     <div class="container" id="sponsorList">
-      <h1>LIST SPONSOR</h1>
+      <h1>ENROLLED PARTAI KOMPETISI EVENT</h1>
       <table class="container" id="table">
         <tr>
-          <th style="text-align: center">Nama Sponsor</th>
+          <th style="text-align: center">Nama Event</th>
+          <th style="text-align: center">Tahun</th>
+          <th style="text-align: center">Stadium</th>
+          <th style="text-align: center">Jenis Partai</th>
+          <th style="text-align: center">Kategori Superseries</th>
           <th style="text-align: center">Tanggal Mulai</th>
           <th style="text-align: center">Tanggal Selesai</th>
         </tr>
-        {% for s in sponsor_list %}
+        {% for e in enrolled_list %}
         <tr>
-          <td>{{ s.0 }}</td>
-          <td>{{ s.1 }}</td>
-          <td>{{ s.2 }}</td>
+          <td>{{ e.0 }}</td>
+          <td>{{ e.1 }}</td>
+          <td>{{ e.2 }}</td>
+          <td>{{ e.3 }}</td>
+          <td>{{ e.4 }}</td>
+          <td>{{ e.5 }}</td>
+          <td>{{ e.6 }}</td>
         </tr>
         {% endfor %}
         <!-- Tambahkan baris atlet lainnya -->

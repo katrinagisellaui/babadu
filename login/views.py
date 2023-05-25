@@ -47,28 +47,44 @@ def login(request):
             pelatih = c.fetchone()
             print(pelatih)
 
+            role = None
             response = HttpResponseRedirect(reverse("login:login"))
             if (atlet != None):
-                response = HttpResponseRedirect(
-                    reverse("dashboard:show_dashboard"))
-                print("halo atlet")
+                c.execute(
+                    "SELECT * FROM ATLET_NON_KUALIFIKASI WHERE id_atlet = '{}'".format(myuuid))
+                atlet = c.fetchone()
+                print(atlet)
+                if (atlet == None):
+                    response = HttpResponseRedirect(
+                        reverse("dashboard:show_dashboard"))
+                    role = "ATLET"
+                    print("halo atlet")
+                else:
+                    response = HttpResponseRedirect(
+                        reverse("dashboard:show_dashboard"))
+                    role = "ATLET-NON"
+                    print("halo atlet non")
             if (pelatih != None):
                 response = HttpResponseRedirect(
                     reverse("dashboard:show_dashboard_pelatih"))
                 print("halo pelatih")
+                role = "PELATIH"
             if (umpire != None):
 
                 response = HttpResponseRedirect(
                     reverse("dashboard:show_dashboard_umpire"))
                 print("halo ump")
+                role = "UMPIRE"
 
             response.set_cookie("nama", nama)
             response.set_cookie("id", myuuid)
             response.set_cookie("email", email)
+            response.set_cookie("role", role)
 
             print(response.cookies.get('nama'))
             print(response.cookies.get('id'))
             print(response.cookies.get('email'))
+            print(response.cookies.get("role"))
 
             messages.success(request, "Login success!")
             return response
@@ -84,5 +100,6 @@ def logout_user(request):
     response.delete_cookie("nama")
     response.delete_cookie("id")
     response.delete_cookie("email")
+    response.delete_cookie("role")
     messages.success(request, "Logout success!")
     return response
