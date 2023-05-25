@@ -62,7 +62,6 @@ def login(request):
                 else:
                     response = HttpResponseRedirect(
                         reverse("dashboard:show_dashboard"))
-                    response.set_cookie("role", "atlet_non_kualif")
                     role = "ATLET-NON"
                     print("halo atlet non")
             if (pelatih != None):

@@ -7,8 +7,7 @@
 <head>
   <title>CRU TES KUALIFIKASI (ATLET)</title>
   <!-- <link rel="stylesheet" href="{% static 'css/cru_tes_kualifikasi_atlet/style.css' %}"> -->
-  <script src="{% static 'js/cru_tes_kualifikasi_atlet/script.js' %}"></script>
-  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <style>  
     /* Global Styles */
   body {
@@ -143,7 +142,7 @@
           <a class="nav-link" href="#">Dashboard</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Tes Kualifikasi</a>
+          <a class="nav-link" href="{% url 'cru_tes_kualif_atlet:home' %}">Ujian Kualifikasi</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Daftar Event</a>
@@ -161,54 +160,68 @@
     </div>
   </nav>
 
-<div class="container" id="qualificationTest" ">
-    <h1>PERTANYAAN KUALIFIKASI</h1>
+<div class="container" id="qualificationTest">
+    <h1>Pertanyaan Ujian</h1>
     <form >
+      {% csrf_token %}
+      {% for pertanyaan_data in pertanyaan %}
       <div>
-        <h5>Question 1</h5>
-        <input type="radio" name="question1" value="Choice 1"> Choice 1<br>
-        <input type="radio" name="question1" value="Choice 2"> Choice 2<br>
-        <input type="radio" name="question1" value="Choice 3"> Choice 3<br>
+        <h5>Question {{forloop.counter}}</h5>
+        <input type="radio" name="question{{forloop.counter}}" value="{{pertanyaan_data.option.0}}"> {{pertanyaan_data.option.0}}<br>
+        <input type="radio" name="question{{forloop.counter}}" value="{{pertanyaan_data.option.1}}"> {{pertanyaan_data.option.1}}<br>
+        <input type="radio" name="question{{forloop.counter}}" value="{{pertanyaan_data.option.2}}"> {{pertanyaan_data.option.2}}<br>
       </div>
+      {% endfor %}
       <br>
-      <div>
-        <h5>Question 2</h5>
-        <input type="radio" name="question2" value="Choice 1"> Choice 1<br>
-        <input type="radio" name="question2" value="Choice 2"> Choice 2<br>
-        <input type="radio" name="question2" value="Choice 3"> Choice 3<br>
-      </div>
-      <br>
-      <div>
-        <h5>Question 3</h5>
-        <input type="radio" name="question2" value="Choice 1"> Choice 1<br>
-        <input type="radio" name="question2" value="Choice 2"> Choice 2<br>
-        <input type="radio" name="question2" value="Choice 3"> Choice 3<br>
-      </div>
-      
-      <br>
-      <div>
-        <h5>Question 4</h5>
-        <input type="radio" name="question2" value="Choice 1"> Choice 1<br>
-        <input type="radio" name="question2" value="Choice 2"> Choice 2<br>
-        <input type="radio" name="question2" value="Choice 3"> Choice 3<br>
-      </div>
-      
-      <br>
-      
-      <div>
-        <h5>Question 5</h5>
-        <input type="radio" name="question2" value="Choice 1"> Choice 1<br>
-        <input type="radio" name="question2" value="Choice 2"> Choice 2<br>
-        <input type="radio" name="question2" value="Choice 3"> Choice 3<br>
-      </div>
       
       <!-- Add more questions here -->
       <button type="button" onclick="submitTest()">SUBMIT</button>
+      <div id="tahun">{{ujian_data.tahun}}</div>
+      <div id="batch">{{ujian_data.batch}}</div>
+      <div id="tempat">{{ujian_data.tempat}}</div>
+      <div id="tanggal">{{ujian_data.tanggal}}</div>
+
     </form>
   </div>
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    function submitTest() {
+      var answers = {};
+
+      // Mengumpulkan jawaban dari formulir
+      {% for pertanyaan_data in pertanyaan %}
+      var questionNumber = {{ forloop.counter }};
+      var selectedChoice = $('input[name="question{{ forloop.counter }}"]:checked').val();
+      answers[questionNumber] = selectedChoice;
+      {% endfor %}
+
+      var request_body = answers
+
+      request_body["tahun"] = document.getElementById("tahun").textContent
+      request_body["batch"] = document.getElementById("batch").textContent
+      request_body["tempat"] = document.getElementById("tempat").textContent
+      request_body["tanggal"] = document.getElementById("tanggal").textContent
+
+      console.log(request_body)
+      // Mengirim jawaban menggunakan AJAX
+      $.ajax({
+        type: 'POST',
+        url: '{% url "cru_tes_kualif_atlet:submit-ujian" %}',
+        data: request_body,
+        headers: { "X-CSRFToken": document.getElementsByName("csrfmiddlewaretoken")[0].value },
+        encode: true,
+        dataTypes: "json",
+        success: function(response) {
+          console.log('Jawaban berhasil dikirim');
+          // Lakukan tindakan atau navigasi ke halaman berikutnya
+        },
+        error: function(error) {
+          console.log('Terjadi kesalahan saat mengirim jawaban:', error);
+        }
+      });
+    }
+  </script>
 </body>
 </html>
 
