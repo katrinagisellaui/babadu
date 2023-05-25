@@ -96,7 +96,7 @@ DATABASES = {
     # }
 
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'babadu',  # name of the database
         'USER': 'postgres',  # username of the databasee
         'PASSWORD': 'postgres',  # password of your postgresql app

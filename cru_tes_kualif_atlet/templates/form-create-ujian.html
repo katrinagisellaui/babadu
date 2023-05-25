@@ -7,9 +7,11 @@
 <head>
   <title>CRU TES KUALIFIKASI (ATLET)</title>
   <!-- <link rel="stylesheet" href="{% static 'css/cru_tes_kualifikasi_atlet/style.css' %}"> -->
-  <script src="{% static 'js/cru_tes_kualifikasi_atlet/script.js' %}"></script>
+<!--  <script src="{% static 'js/cru_tes_kualifikasi_atlet/script.js' %}"></script>-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-  <style>  
+
+  <style>
   /* Global Styles */
 body {
     font-family: Arial, sans-serif;
@@ -147,7 +149,7 @@ body {
           <a class="nav-link" href="#">Dashboard</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Tes Kualifikasi</a>
+          <a class="nav-link" href="{% url 'cru_tes_kualif_atlet:home' %}">Ujian Kualifikasi</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Daftar Event</a>
@@ -166,40 +168,84 @@ body {
   </nav>
 
   <div class="container" id="qualificationForm">
-    <h1>FORM DATA KUALIFIKASI</h1>
-    <form name="qualification" method="POST">
+    <h1>Form Ujian Kualifikasi Baru</h1>
+    <form name="qualification" id="ujianForm" method="POST">
       {% csrf_token %}
+
+      <div>
+        <label for="tahun">Tahun:</label>
+        <input type="number" min=2010 max=2100 id="tahun" required>
+      </div>
       <div>
         <label for="batchNumber">Nomor batch:</label>
-        <input type="text" name="batchNumber" required>
+        <input type="number" min=1 id="batchNumber" required>
       </div>
       <div>
         <label for="location">Tempat pelaksanaan:</label>
-        <select name="location" required>
-          <option value="">Pilih tempat</option>
-          <option value="Tempat A">Tempat A</option>
-          <option value="Tempat B">Tempat B</option>
-          <option value="Tempat C">Tempat C</option>
-        </select>
+        <input type="text" minlength=2 id="location" required>
       </div>
       <div>
         <label for="date">Tanggal pelaksanaan:</label>
-        <select name="date" required>
-          <option value="">Pilih tanggal</option>
-          <option value="2023-05-10">10 Mei 2023</option>
-          <option value="2023-05-15">15 Mei 2023</option>
-          <option value="2023-05-20">20 Mei 2023</option>
-        </select>
+        <input type="date" id="date" required>
       </div>
-      <button type="submit">NEXT</button>
+      <button type="submit">BUAT</button>
     </form>
+
   </div>
 
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </body>
 
+<script>
+  document.getElementById("ujianForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // prevent form submission
+
+    // Get form values
+    var tahun = document.getElementById("tahun").value;
+    var batch = document.getElementById("batchNumber").value;
+    var tempat = document.getElementById("location").value;
+    var tanggal = document.getElementById("date").value;
+
+    // Do something with the form data (e.g., send it to a server)
+    console.log("Tahun:", tahun);
+    console.log("Batch:", batch);
+    console.log("Tempat Pelaksanaan:", tempat);
+    console.log("Tanggal Pelaksanaan:", tanggal);
+
+    // Create request body as JSON
+    var requestBody = {
+      tahun: tahun,
+      batch: batch,
+      tempat: tempat,
+      tanggal: tanggal
+    };
+
+    submitForm(requestBody);
+  });
+
+  function submitForm(body){
+    console.log(body)
+    $(document).ready(function(){
+      $.ajax({
+        type: 'POST',
+        url: "{% url 'cru_tes_kualif_atlet:submit-new-ujian' %}",
+        headers: { "X-CSRFToken": document.getElementsByName("csrfmiddlewaretoken")[0].value },
+        encode: true,
+        dataType: "json",
+        data: body,
+        success: function(data){
+          console.log(data)
+          document.getElementById("ujianForm").reset();
+          window.location.href = "{% url 'cru_tes_kualif_atlet:list-ujian' %}"
+        },
+        failure: function(data){
+          alert("failure")
+        }
+      })
+    })
+  }
+</script>
 
 
 
