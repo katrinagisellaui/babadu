@@ -76,7 +76,19 @@ def show_dashboard_pelatih(request):
 
 
 def show_dashboard_umpire(request):
-    return render(request, 'dashboard_umpire.html')
+    query_select = """
+    SELECT negara
+    FROM UMPIRE U
+    WHERE U.ID = %s
+    """
+    cursor = connection.cursor()
+    nama = request.COOKIES.get("nama")
+    email = request.COOKIES.get("email")
+    id = request.COOKIES.get("id")
+    cursor.execute(query_select, (id, ))
+    negara = cursor.fetchone()[0]
+    context = {"nama":nama, "email":email, "negara":negara}
+    return render(request, 'dashboard_umpire.html', context=context)
 
 
 def show_forbidden(request):
