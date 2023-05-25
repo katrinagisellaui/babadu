@@ -8,48 +8,88 @@ import psycopg2
 
 
 def show_dashboard(request):
-    cursor = connection.cursor()
-    query_select = """
-    SELECT *
-    FROM ATLET A, POINT_HISTORY P
-    WHERE A.id = %s AND A.id = P.id_atlet
-    """
-
-    query_select_2 = """
-    SELECT MAX(P.total_point)
-    FROM ATLET A, POINT_HISTORY P
-    WHERE A.id = %s AND A.id = P.id_atlet
-    """
-
-    query_select_3 = """
-    SELECT M.nama
-    FROM ATLET_PELATIH AP, PELATIH P, MEMBER M
-    WHERE AP.ID_ATLET = %s AND AP.ID_pelatih = P.ID AND P.ID = M.ID
-    """
-
-    query_select_4 = """
-    SELECT ID_Atlet
-    FROM ATLET_KUALIFIKASI AK
-    WHERE AK.ID_ATLET = %s
-    """
-
+    if (request.COOKIES.get('id') == None):
+        return redirect("dashboard:show_forbidden")
     nama = request.COOKIES.get("nama")
     email = request.COOKIES.get("email")
-    cursor.execute(query_select, (request.COOKIES.get("id"),))
-    data_atlet = cursor.fetchall()[0]
-    cursor.execute(query_select_2, (request.COOKIES.get("id"),))
-    poin = cursor.fetchone()[0]
-    cursor.execute(query_select_3, (request.COOKIES.get("id"),))
-    nama_pelatih = cursor.fetchone()[0]
-    cursor.execute(query_select_4, (request.COOKIES.get("id"),))
-    status = cursor.fetchone()[0]
-    if (status is None):
-        status = "Not Qualified"
-    else :
-        status = "Qualified"
-    context = {"data_atlet":data_atlet, "nama":nama, "email":email, "poin":poin, "pelatih":nama_pelatih
-               ,"status":status}
-    return render(request, 'dashboard.html', context=context)
+    role = request.COOKIES.get("role")
+    myid = request.COOKIES.get("id")
+
+    print(nama)
+    print(email)
+    print(role)
+
+    context = {}
+
+    if (role == "ATLET"):
+        c = connection.cursor()
+        c.execute("SELECT * FROM ATLET WHERE ID = '{}'".format(myid))
+        response = c.fetchall()
+        print(response)
+        print(response[0][0])
+        print(response[0][1])
+
+        tanggal = response[0][1]
+        negara = response[0][2]
+        play = response[0][3]
+        height = response[0][4]
+        rank = response[0][5]
+        gender = response[0][6]
+
+        c.execute(
+            "SELECT DISTINCT * FROM POINT_HISTORY WHERE id_atlet = '{}' ORDER BY tahun desc, bulan desc, minggu_ke desc;".format(myid))
+        response = c.fetchall()
+
+        point = response[0][4]
+
+        context = {
+            "nama": nama,
+            "email": email,
+            "tanggal": tanggal,
+            "negara": negara,
+            "play": play,
+            "height": height,
+            "rank": rank,
+            "gender": gender,
+            "status": "Qualified",
+            "poin": point,
+            "role": role
+
+        }
+        return render(request, 'dashboard.html', context)
+    else:
+        c = connection.cursor()
+        c.execute("SELECT * FROM ATLET WHERE ID = '{}'".format(myid))
+        response = c.fetchall()
+        print(response)
+        print(response[0][0])
+        print(response[0][1])
+
+        tanggal = response[0][1]
+        negara = response[0][2]
+        play = response[0][3]
+        height = response[0][4]
+        rank = response[0][5]
+        gender = response[0][6]
+
+        point = 0
+
+        context = {
+            "nama": nama,
+            "email": email,
+            "tanggal": tanggal,
+            "negara": negara,
+            "play": play,
+            "height": height,
+            "rank": rank,
+            "gender": gender,
+            "status": "Not Qualified",
+            "poin": point,
+            "role": role
+
+        }
+        return render(request, 'dashboard.html', context)
+
 
 
 def show_dashboard_pelatih(request):
