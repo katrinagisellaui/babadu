@@ -118,17 +118,25 @@
     </nav>
   
     <div class="container-fluid pt-3" style="text-align: left">
-      <h5>Nama Lengkap : Alfreda Skeen</h5>
-      <h5>Negara : Poland</h5>
-      <h5>Email : askeen0@last.fm</h5>
-      <h5>Tanggal Lahir : 10/22/1992</h5>
+      <h5>Nama Lengkap : {{nama}}</h5>
+      <h5>Negara : {{data_atlet.2}}</h5>
+      <h5>Email : {{email}}</h5>
+      <h5>Tanggal Lahir : {{data_atlet.1}}</h5>
+      {% if data_atlet.3 %}
+      <h5>Play (Right/Left Hand) : Right</h5>
+      {% else %}
       <h5>Play (Right/Left Hand) : Left</h5>
-      <h5>Tinggi Badan: 180</h5>
+      {% endif %}
+      <h5>Tinggi Badan: {{data_atlet.4}}</h5>
+      {% if data_atlet.6 %}
       <h5>Jenis Kelamin: Male</h5>
-      <h5>Pelatih : -</h5>
-      <h5>Status : Not Qualified</h5>
-      <h5>World Rank : -</h5>
-      <h5>Total Poin : 0</h5>
+      {% else %}
+      <h5>Jenis Kelamin: Female</h5>
+      {% endif %}
+      <h5>Pelatih : {{pelatih}}</h5>
+      <h5>Status : {{status}}</h5>
+      <h5>World Rank : {{data_atlet.5}}</h5>
+      <h5>Total Poin : {{poin}}</h5>
     </div>
   </body>
 </html>
